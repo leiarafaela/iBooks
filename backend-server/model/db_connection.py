@@ -1,15 +1,24 @@
 import mysql.connector
+from dotenv import load_dotenv
 from contextlib import closing
 import os
 
 
+load_dotenv()
+
+
+user = os.getenv('DB_USER')
+password = os.getenv('DB_PASSWORD')
+host = os.getenv('DB_HOST')
+database = os.getenv('DB_DATABASE')
+
 
 def conectar_mysql():
     conn = mysql.connector.connect(
-        user="b6a4da3f3869f6",
-        password="dd33ced0",
-        host="us-cdbr-east-06.cleardb.net",
-        database="heroku_315c522990c1dd4"
+        user=user,
+        password=password,
+        host=host,
+        database=database
     )
 
     return conn
@@ -23,4 +32,4 @@ def db_criar_clientes(nome, email, telefone):
     
 
 
-db_criar_clientes("Gabriel", "gabriel@gmail.com", "11-99495999")
+db_criar_clientes("Leia", "leia@gmail.com", "11-994395999")
