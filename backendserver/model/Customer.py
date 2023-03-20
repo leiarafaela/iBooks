@@ -1,23 +1,6 @@
-import mysql.connector
-from dotenv import load_dotenv
 from contextlib import closing
-import os
+from model.db_connection import conectar_mysql
 
-load_dotenv()
-
-user = os.getenv('DB_USER')
-password = os.getenv('DB_PASSWORD')
-host = os.getenv('DB_HOST')
-database = os.getenv('DB_DATABASE')
-
-
-def conectar_mysql():
-    conn = mysql.connector.connect(
-        user=user,
-        password=password,
-        host=host,
-        database=database)
-    return conn
 
 class Customer():
     def getAll():
@@ -39,15 +22,17 @@ class Customer():
             con.close()
             return customer
         
+    def update(id, customer):
+        with closing(conectar_mysql()) as con, closing(con.cursor()) as cur:
+            cur.execute("UPDATE clientes SET nome = %s, email = %s, telefone = %s WHERE id = %s", [customer['nome'], customer['email'], customer['telefone'], id])
+            con.commit()
+            con.close()
+        
     def delete(id):
         with closing(conectar_mysql()) as con, closing(con.cursor()) as cur:
             cur.execute("DELETE FROM clientes WHERE id = %s", [id])
             con.commit()
             con.close()
 
-    def update(id, customer):
-        with closing(conectar_mysql()) as con, closing(con.cursor()) as cur:
-            cur.execute("UPDATE clientes SET nome = %s, email = %s, telefone = %s WHERE id = %s", [customer['nome'], customer['email'], customer['telefone'], id])
-            con.commit()
-            con.close()
+
             
