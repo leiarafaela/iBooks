@@ -16,8 +16,8 @@ def get_all_customers():
 
 @app.route('/clientes/<int:customer_id>', methods=['GET'])
 def get_customer(customer_id):
-    return make_response(jsonify(
-        customer.getById(customer_id)))
+    return jsonify(
+        customer.getById(customer_id))
 
 @app.route('/clientes', methods=['POST'])
 def create_customer():
