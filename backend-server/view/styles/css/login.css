@@ -1,0 +1,148 @@
+body{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  
+}
+
+
+/* Barra de navegação */
+nav{
+  height: 80px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 30px 10%;
+  border: 1px solid #ccc;
+  margin-right: auto;
+}
+
+nav a img{
+  width: 80px;
+  height: 80px;
+}
+
+.nav-links{
+  list-style: none;
+  margin-left: auto; 
+}
+.nav-links li{
+  font-size: 14px;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: bold;
+  display: inline-block;
+  padding: 0 20px;
+}
+
+.nav-links li a{
+  text-decoration: none;
+  color: #000000;
+  transition: all 0.3s ease 0s;
+}
+
+.nav-links li a:hover{
+  color: #E69542;
+}
+
+.btn_login button {
+  width: 140px;
+  background-color: #E69542;
+  color: #ffffff;
+  padding: 10px;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+}
+
+.btn_login button:hover{
+  transition: 0.3s ease 0s;
+  transform: translateY(-10px);
+}
+
+/* Login */
+
+.container{
+  margin-top: 50px;
+  height: 40vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.corpo-forms{
+  width: 450px;
+  padding: 15px 0 20px 0;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 10px;
+  background-color: #00C5B7;
+}
+
+.corpo-forms img{
+  max-width: 100px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 400px;
+  padding: 25px 0 10px 0;
+}
+
+/* .corpo-forms label {
+  font-size: 18px;
+  margin: 10px 5px;
+  text-align: left;
+  color: #fff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  align-self: flex-start;
+  
+} */
+
+input {
+  padding: 5px 10px;
+  font-size: 16px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  border: none;
+}
+
+
+.container form button{
+  width: 140px;
+  background-color: #E69542 ;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  color: #fff;
+  font-weight: bold;
+}
+
+.cadastro-screen{
+  color: #fff;
+  text-decoration: none;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin-bottom: 15px;
+}
+
+.cadastro-screen:hover{
+  text-decoration: underline;
+}
+
+.google-auth{
+  width: 50%;
+  background-color: gray;
+  padding: 10px;
+  text-align: center;
+}
