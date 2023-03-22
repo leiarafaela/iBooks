@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../styles/css/default.css" />
+    <link rel="stylesheet" href="../styles/css/painel-parceiro.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- Barra de navegação -->
+    <header>
+      <nav>
+        <a href="./index.html"
+          ><img src="../styles/img/ibook_logo.png" alt=""
+        /></a>
+        <ul class="nav-links">
+          <li><a href="">Lorem</a></li>
+          <li><a href="">Lorem</a></li>
+          <li><a href="">Lorem</a></li>
+          <li><a href="">Lorem</a></li>
+        </ul>
+      </nav>
+    </header>
+    <!-- Formulários do CRUD -->
+    <h1>Crud</h1>
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <table class="tab">
+            <thead>
+              <th>Nome</th>
+              <th>Preço</th>
+              <th>Sinopse</th>
+              <th>Quantidade</th>
+              <th>Autor</th>
+              <th>Editora</th>
+            </thead>
+            <tbody>
+              {% for produto in produtos %}
+              <tr>
+                <td>{{ produto.nome }}</td>
+                <td>{{ produto.preco }}</td>
+                <td>{{ produto.sinopse }}</td>
+                <td>{{ produto.quantidade }}</td>
+                <td>{{ produto.autor }}</td>
+                <td>{{ produto.editora }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <h1>Novo Produto</h1>
+      <form method="POST" action="/produtos/novo">
+        <label>Nome</label>
+        <input type="text" name="nome" required />
+        <br />
+        <label>Preço</label>
+        <input type="number" name="preco" step="0.01" required />
+        <br />
+        <label>Sinopse</label>
+        <textarea name="sinopse" required></textarea>
+        <br />
+        <label>Quantidade</label>
+        <input type="number" name="quantidade" required />
+        <br />
+        <label>Autor</label>
+        <input type="text" name="autor" required />
+        <br />
+        <label>Editora</label>
+        <input type="text" name="editora" required />
+        <br />
+        <input type="submit" value="Adicionar" />
+      </form>
+
+      <h1>Editar Produto</h1>
+      <form method="POST" action="/produtos/editar/{{ produto.id }}">
+        <label>Nome</label>
+        <input type="text" name="nome" value="{{ produto.nome }}" required />
+        <br />
+        <label>Preço</label>
+        <input
+          type="number"
+          name="preco"
+          step="0.01"
+          value="{{ produto.preco }}"
+          required
+        />
+        <br />
+        <label>Sinopse</label>
+        <textarea name="sinopse" required>{{ produto.sinopse }}</textarea>
+        <br />
+        <label>Quantidade</label>
+        <input
+          type="number"
+          name="quantidade"
+          value="{{ produto.quantidade }}"
+          required
+        />
+        <br />
+        <label>Autor</label>
+        <input type="text" name="autor" value="{{ produto.autor }}" required />
+        <br />
+        <label>Editora</label>
+        <input
+          type="text"
+          name="editora"
+          value="{{ produto.editora }}"
+          required
+        />
+        <br />
+        <input type="submit" value="Salvar" />
+      </form>
+
+      <h1>Excluir Produto</h1>
+      <p>Deseja excluir o produto "{{ produto.nome }}"?</p>
+      <form method="POST" action="/produtos/excluir/{{ produto.id }}">
+        <input type="submit" value="Excluir" />
+      </form>
+    </div>
+  </body>
+</html>
