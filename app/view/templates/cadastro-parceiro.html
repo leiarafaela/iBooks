@@ -6,9 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/x-icon" href="../styles/img/ibook_logo.png" />
     <link rel="stylesheet" href="../styles/css/default.css" />
-    <title>Document</title>
+    <link rel="stylesheet" href="../styles/css/cadastro-parceiro.css" />
+    <title>Cadastro Parceiro</title>
   </head>
   <body>
+    <!-- Menu de navegação -->
     <header>
       <nav>
         <a href="./index.html"
@@ -22,6 +24,175 @@
         </ul>
       </nav>
     </header>
+    <!-- Bloco onde fica o formulário -->
+    <div class="container">
+      <div class="form">
+        <form action="#">
+          <div class="form-header">
+            <div class="title">
+              <h1>Cadastre-se</h1>
+            </div>
+          </div>
+
+          <div class="input-group">
+            <div class="input-box">
+              <label for="nomeLivraria">Nome</label>
+              <input
+                id="nomeLivraria"
+                type="text"
+                name="nomeLivraria"
+                placeholder="Digite o nome da Livraria"
+                required
+              />
+            </div>
+
+            <div class="input-box">
+              <label for="cnpj">CNPJ</label>
+              <input
+                id="cnpj"
+                type="text"
+                name="cnpj"
+                placeholder="Digite seu CNPJ"
+                required
+              />
+            </div>
+
+            <div class="input-box">
+              <label for="email">E-mail</label>
+              <input
+                id="email"
+                type="email"
+                name="email"
+                placeholder="Digite seu e-mail"
+                required
+              />
+            </div>
+
+            <div class="input-box">
+              <label for="number">Celular</label>
+              <input
+                id="number"
+                type="tel"
+                name="number"
+                placeholder="(xx) xxxxx-xxxx"
+                required
+              />
+            </div>
+
+            <div class="input-box">
+              <label for="password">Senha</label>
+              <input
+                id="password"
+                type="password"
+                name="password"
+                placeholder="Digite sua senha"
+                required
+              />
+            </div>
+
+            <div class="input-box">
+              <label for="cidade">Cidade</label>
+              <input
+                id="cidade"
+                type="password"
+                name="confirmPassword"
+                placeholder="Digite sua cidade"
+                required
+              />
+            </div>
+            <div class="input-box">
+              <label for="UF">Estado</label>
+              <select id="UF" name="UF">
+                <option value="">Selecione</option>
+                <option value="AC">Acre</option>
+                <option value="AL">Alagoas</option>
+                <option value="AP">Amapá</option>
+                <option value="AM">Amazonas</option>
+                <option value="BA">Bahia</option>
+                <option value="CE">Ceará</option>
+                <option value="DF">Distrito Federal</option>
+                <option value="ES">Espirito Santo</option>
+                <option value="GO">Goiás</option>
+                <option value="MA">Maranhão</option>
+                <option value="MS">Mato Grosso do Sul</option>
+                <option value="MT">Mato Grosso</option>
+                <option value="MG">Minas Gerais</option>
+                <option value="PA">Pará</option>
+                <option value="PB">Paraíba</option>
+                <option value="PR">Paraná</option>
+                <option value="PE">Pernambuco</option>
+                <option value="PI">Piauí</option>
+                <option value="RJ">Rio de Janeiro</option>
+                <option value="RN">Rio Grande do Norte</option>
+                <option value="RS">Rio Grande do Sul</option>
+                <option value="RO">Rondônia</option>
+                <option value="RR">Roraima</option>
+                <option value="SC">Santa Catarina</option>
+                <option value="SP">São Paulo</option>
+                <option value="SE">Sergipe</option>
+                <option value="TO">Tocantins</option>
+              </select>
+            </div>
+            <div class="input-box">
+              <label for="bairro">Bairro</label>
+              <input
+                id="bairro"
+                type="text"
+                name="bairro"
+                placeholder="Digite seu bairro"
+                required
+              />
+            </div>
+            <div class="input-box">
+              <label for="logradouro">Logradouro</label>
+              <input
+                id="logradouro"
+                type="text"
+                name="logradouro"
+                placeholder="Digite seu logradouro"
+                n
+                required
+              />
+            </div>
+            <div class="input-box">
+              <label for="numero">Número</label>
+              <input
+                id="numero"
+                type="text"
+                name="numero"
+                placeholder="Digite o número do local"
+                required
+              />
+            </div>
+            <div class="input-box">
+              <label for="complemento">Complemento</label>
+              <input
+                id="complemento"
+                type="text"
+                name="complemento"
+                placeholder="Digite o complemento"
+                required
+              />
+            </div>
+            <div class="input-box">
+              <label for="cep">CEP</label>
+              <input
+                id="cep"
+                type="number"
+                name="cep"
+                placeholder="Digite o cep do local"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="continue-button">
+            <button><a href="#">Continuar</a></button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- Rodapé -->
     <footer></footer>
   </body>
 </html>

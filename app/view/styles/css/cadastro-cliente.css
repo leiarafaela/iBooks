@@ -5,12 +5,11 @@
 }
 
 .form {
-
+  width: 50%;
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #fff;
   padding: 3rem;
 }
 
@@ -42,6 +41,7 @@
   display: flex;
   flex-direction: column;
   margin-bottom: 1.1rem;
+  padding: 10px;
 }
 
 .input-box input {
@@ -82,13 +82,12 @@
 
 
 .continue-button button {
-
+  float: right;
   border: none;
   background-color: #E69542;
   padding: 0.62rem;
   border-radius: 5px;
   cursor: pointer;
-  
 }
 
 .continue-button button:hover {
@@ -102,26 +101,3 @@
   color: #fff;
 }
 
-@media screen and (max-width: 1330px) {
-  .container {
-      width: 50%;
-  }
-  .form {
-      width: 100%;
-  }
-}
-
-@media screen and (max-width: 1064px) {
-  .container {
-      width: 90%;
-      height: auto;
-  }
-  .input-group {
-      flex-direction: column;
-      z-index: 5;
-      padding-right: 5rem;
-      max-height: 10rem;
-      overflow-y: scroll;
-      flex-wrap: nowrap;
-  }
-}
