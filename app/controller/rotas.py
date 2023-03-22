@@ -1,15 +1,15 @@
-from flask import Flask, make_response, jsonify, request
+from flask import Flask, make_response, jsonify, render_template, request
 from model.Customer import Customer as customer
 from model.Produtos import Produtos as produtos
 from model.Parceiros import Parceiros as parceiro
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='../view/templates')
 app.config['JSON_SORT_KEYS'] = False
 
-
 @app.route('/')
-def root():
-    return "<h1>API de Clientes</h1>" 
+@app.route('/login')
+def index():
+    return render_template('login.html')
 
 @app.route('/clientes', methods=['GET'])
 def get_all_customers():
