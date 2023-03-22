@@ -26,6 +26,7 @@
     <!-- Formulários do CRUD -->
     <h1>Crud</h1>
     <div class="container">
+      <!-- Lista produto -->
       <div class="row">
         <div class="col-xs-12">
           <table class="tab">
@@ -52,7 +53,7 @@
           </table>
         </div>
       </div>
-
+      <!-- Novo Produto -->
       <h1>Novo Produto</h1>
       <form method="POST" action="/produtos/novo">
         <label>Nome</label>
@@ -75,7 +76,7 @@
         <br />
         <input type="submit" value="Adicionar" />
       </form>
-
+      <!-- Editar Protudo -->
       <h1>Editar Produto</h1>
       <form method="POST" action="/produtos/editar/{{ produto.id }}">
         <label>Nome</label>
@@ -114,7 +115,7 @@
         <br />
         <input type="submit" value="Salvar" />
       </form>
-
+      <!-- Deleta Produto -->
       <h1>Excluir Produto</h1>
       <p>Deseja excluir o produto "{{ produto.nome }}"?</p>
       <form method="POST" action="/produtos/excluir/{{ produto.id }}">
