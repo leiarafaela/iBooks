@@ -1,5 +1,5 @@
 from contextlib import closing
-from model.db_connection import conectar_mysql
+from model.Connection import conectar_mysql
 from util import row_to_dict, rows_to_dict
 
 
