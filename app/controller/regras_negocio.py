@@ -4,7 +4,7 @@ from model.Parceiros import Parceiros
 from model.Auth import Auth
 from util import criptografar_senha, verificar_senha
 
-def create_costumer_login(costumer, auth):
+def  create_costumer_login(costumer, auth):
     create_custumer = Customer.create(costumer)
     crip, salt = criptografar_senha(auth['senha'])
     auth['senha'] = crip
@@ -44,9 +44,14 @@ def login_check(auth):
     return verifyCheck
 
 
-
-
-
+def create_parceiro_login(parceiro, auth):
+    create_parceiro = Parceiros.create(parceiro)
+    crip, salt = criptografar_senha(auth['senha'])
+    auth['senha'] = crip
+    auth['salt'] = salt
+    Auth.create(auth)
+    
+    return create_parceiro
 
 
 

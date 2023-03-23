@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/x-icon" href="../styles/img/ibook_logo.png" />
     <link rel="stylesheet" href="../styles/css/default.css" />
     <link rel="stylesheet" href="../styles/css/login.css" />
     <title>Login</title>
@@ -14,14 +13,13 @@
     <header>
       <nav>
         <a href="./index.html"
-          ><img src="../styles/img/ibook_logo.png" alt=""
-        /></a>
+          ><img src="../styles/img/ibook_logo.png" alt="Logo-Ibook">
+        </a>
       </nav>
     </header>
     <!-- Formulário de login -->
     <section class="container">
       <div class="corpo-forms">
-        <img src="../styles/img/ibook_logo.png" alt="Logo-Ibook" />
         <form action="" method="POST">
           <input type="email" name="email" id="id_email" placeholder="Email" />
           <input
@@ -30,10 +28,62 @@
             id="id_senha"
             placeholder="Senha"
           />
-          <button type="submit">Entrar</button>
+          <button type="submit">Entrar</button><br><br>
         </form>
+        <button class="google-auth" id="login">Login com Google</button>
       </div>
     </section>
     <footer></footer>
   </body>
+
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.18.0/firebase-app.js";
+    import { getAuth, GoogleAuthProvider, signInWithRedirect, getRedirectResult } from "https://www.gstatic.com/firebasejs/9.18.0/firebase-auth.js";
+
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyC6Mgll4mILz56iQnBcPi-fR6UAXwE1nVg",
+      authDomain: "ibooks-6fdfc.firebaseapp.com",
+      projectId: "ibooks-6fdfc",
+      storageBucket: "ibooks-6fdfc.appspot.com",
+      messagingSenderId: "1005973278571",
+      appId: "1:1005973278571:web:cf3385e1addf495a01c62e"
+    };
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const provider = new GoogleAuthProvider(app);
+
+    login.addEventListener('click', (e) => {
+      signInWithRedirect(auth, provider);
+
+      getRedirectResult(auth)
+        .then((result) => {
+    // This gives you a Google Access Token. You can use it to access Google APIs.
+    const credential = GoogleAuthProvider.credentialFromResult(result);
+    const token = credential.accessToken;
+
+    // The signed-in user info.
+    const user = result.user;
+    // IdP data available using getAdditionalUserInfo(result)
+    // ...
+  }).catch((error) => {
+    // Handle Errors here.
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    // The email of the user's account used.
+    const email = error.customData.email;
+    // The AuthCredential type that was used.
+    const credential = GoogleAuthProvider.credentialFromError(error);
+    // ...
+  });
+    })
+  </script> 
+
+
 </html>

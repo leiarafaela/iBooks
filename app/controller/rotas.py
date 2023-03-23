@@ -2,7 +2,7 @@ from flask import Flask, make_response, jsonify, render_template, request, url_f
 from model.Customer import Customer as customer
 from model.Produtos import Produtos as produtos
 from model.Parceiros import Parceiros as parceiro
-from controller.regras_negocio import create_costumer_login, login_check, update_customer
+from controller.regras_negocio import create_costumer_login, login_check, update_customer, create_parceiro_login
 
 app = Flask(__name__, template_folder='../view/templates')
 app.config['JSON_SORT_KEYS'] = False
@@ -112,3 +112,35 @@ def update(customer_id):
 
     return render_template('menu.html', message=message)
 
+
+##############################################################################
+##                                                                           ##
+##                              CRUD PARCEIROS                               ##
+##                                                                           ##
+##                                                                           ##
+##############################################################################
+
+@app.route('/parceiro/novo', methods=['GET'])
+def show_parceiro_form():
+    return render_template('cadastro-parceiro.html')
+
+
+@app.route('/parceiro/novo', methods=['POST'])
+def create_parceiro():
+    infos_parceiro = {}
+    infos_auth = {}
+    for chave, valor in request.form.items():
+        if chave == "senha" or chave == "email":
+            infos_auth[chave] = valor
+            
+        infos_auth['tipo_acesso'] = 1
+        
+        infos_parceiro[chave] = valor
+
+    infos_auth['tipo_acesso'] = 1
+    newParceiro = create_parceiro_login(infos_parceiro, infos_auth)
+
+
+    message = f"Empresa {newParceiro} foi criado com sucesso."
+
+    return render_template('menu.html', message=message)
