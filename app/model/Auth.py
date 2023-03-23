@@ -16,6 +16,11 @@ class Auth():
             cur.execute("SELECT * FROM login_users WHERE id = %s", [id])
             return row_to_dict(cur.description, cur.fetchone())
         
+    def getByEmail(email):
+        with closing(conectar_mysql()) as con, closing(con.cursor()) as cur:
+            cur.execute("SELECT * FROM login_users WHERE email = %s", [email])
+            return row_to_dict(cur.description, cur.fetchone())
+        
     def create(auth):
         with closing(conectar_mysql()) as con, closing(con.cursor()) as cur:
             cur.execute("INSERT INTO login_users (email, senha, tipo_acesso, salt) VALUES(%s,%s,%s,%s)", [
