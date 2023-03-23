@@ -15,14 +15,13 @@ class Parceiros():
 
     def create(parceiro):
         with closing(conectar_mysql()) as con, closing(con.cursor()) as cur:
-            cur.execute("INSERT INTO parceiros (nome_empresa, cnpj, celular, email, cidade, estado, bairro, cep, numero, complemento, lougradouro) "+
-                        "VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s %s, %s)", [
+            cur.execute("INSERT INTO parceiros (nome_empresa, cnpj, celular, email, cidade, estado, bairro, cep, numero, complemento, lougradouro) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s %s, %s)", [
                         parceiro['nome_empresa'], parceiro['cnpj'], parceiro['celular'], parceiro['email'], parceiro['cidade'], parceiro['estado'],
                         parceiro['bairro'], parceiro['cep'], parceiro['numero'], parceiro['complemento'], parceiro['lougradouro']])
-            customer = cur.lastrowid
+            parceiro = cur.lastrowid
             con.commit()
             con.close()
-            return customer
+            return parceiro
 
     def update(id, parceiro):
         with closing(conectar_mysql()) as con, closing(con.cursor()) as cur:
