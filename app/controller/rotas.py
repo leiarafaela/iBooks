@@ -1,121 +1,114 @@
-from flask import Flask, make_response, jsonify, render_template, request
+from flask import Flask, make_response, jsonify, render_template, request, url_for, redirect
 from model.Customer import Customer as customer
 from model.Produtos import Produtos as produtos
 from model.Parceiros import Parceiros as parceiro
+from controller.regras_negocio import create_costumer_login, login_check, update_customer
 
 app = Flask(__name__, template_folder='../view/templates')
 app.config['JSON_SORT_KEYS'] = False
 
+
+################## HOME #####################
 @app.route('/')
-@app.route('/login')
-def index():
+@app.route('/home')
+def home():
+    return render_template('menu.html')
+
+
+################ VISUALIZAÇÃO FORM E LOGIN ##########################
+@app.route('/login', methods=['GET'])
+def show_login():
     return render_template('login.html')
 
+@app.route('/login', methods=['POST'])
+def login():
+    infos_auth = {}
+    for chave, valor in request.form.items():
+        infos_auth[chave] = valor
+
+    logado = login_check(infos_auth)
+
+    if not logado:
+        return render_template("/login.html", erro="ERRO")
+    
+    return render_template("menu.html",  mensagem = "")
+    
+
+
+##############################################################################
+##                                                                          ##
+##                              CRUD CLIENTES                               ##
+##                                                                          ##
+##                                                                          ##
+##############################################################################
 @app.route('/clientes', methods=['GET'])
 def get_all_customers():
-    return make_response(jsonify(
-        customer.getAll()))
+    list_customer = customer.getAll()
+
+    return render_template("painel-admin.html", usuarios=list_customer)
 
 @app.route('/clientes/<int:customer_id>', methods=['GET'])
 def get_customer(customer_id):
     return jsonify(
         customer.getById(customer_id))
 
-@app.route('/clientes', methods=['POST'])
+
+##################### VISUALIZAÇÃO FORM E CRIAÇÃO CLIENTE ##########################
+@app.route('/cliente/novo', methods=['GET'])
+def show_customer_form():
+    return render_template('cadastro-cliente.html')
+
+@app.route('/cliente/novo', methods=['POST'])
 def create_customer():
-    body = request.json
-    customer.create(body)
-    return make_response(jsonify(
-        message='Cliente cadastrado com sucesso.'))
+    infos_custumer = {}
+    infos_auth = {}
+    for chave, valor in request.form.items():
+        if chave == "senha" or chave == "email":
+            infos_auth[chave] = valor
+            
+        infos_auth['tipo_acesso'] = 1
+        
+        infos_custumer[chave] = valor
 
-@app.route('/clientes/<int:customer_id>', methods=['DELETE'])
+    infos_auth['tipo_acesso'] = 1
+    newCustomer = create_costumer_login(infos_custumer, infos_auth)
+
+
+    message = f"O usuario {newCustomer} foi criado com sucesso."
+
+    return render_template('menu.html', message=message)
+
+@app.route('/delete/<int:customer_id>', methods= ['GET','DELETE'])
 def delete_customers(customer_id):
-    customer.delete(customer_id)
-    return make_response(jsonify(
-        message='Cliente excluido com sucesso.'))
+    cliente=customer.getById(customer_id)
+    if cliente is not None:
+        customer.delete(customer_id)
+    return render_template('menu.html')
 
-@app.route('/clientes/<int:customer_id>', methods=['PUT'])
+
+
+@app.route('/atualizar/<int:customer_id>', methods=['GET'])
+def show_update(customer_id):
+    cliente=customer.getById(customer_id)
+    return render_template('update-cliente.html', cliente=cliente)
+
+
+@app.route('/atualizar/<int:customer_id>', methods=['POST'])
 def update(customer_id):
-    body = request.json
-    customer.update(customer_id, body)
-    return make_response(jsonify(
-        message='Cliente atualizado com sucesso.',
-        customer=customer.getById(customer_id)))
+    infos_customer = {}
+    infos_auth = {}
+    infos_customer['id'] = customer_id
+    for chave, valor in request.form.items():
+        if chave == "email":
+            infos_auth[chave] = valor
+
+        infos_customer[chave] = valor
 
 
-    ############################################################################
-    ##                                                                        ##
-    ##                         ROTAS DE PRODUTOS                              ##
-    ##                                                                        ##
-    ############################################################################
+    updateCustomer = customer.update(infos_customer, customer_id)
 
 
-@app.route('/produtos', methods=['GET'])
-def get_all_products():
-    return make_response(jsonify(
-        produtos.getAll()))
+    message = f"O usuario {updateCustomer} foi atualizado com sucesso."
 
-@app.route('/produtos/<int:product_id>', methods=['GET'])
-def get_products(product_id):
-    return jsonify(
-        produtos.getById(product_id))
+    return render_template('menu.html', message=message)
 
-@app.route('/produtos', methods=['POST'])
-def create_products():
-    body = request.json
-    produtos.create(body)
-    return make_response(jsonify(
-        message='Produto cadastrado com sucesso.'))
-
-@app.route('/produtos/<int:product_id>', methods=['DELETE'])
-def delete_products(product_id):
-    produtos.delete(product_id)
-    return make_response(jsonify(
-        message='Produto excluido com sucesso.'))
-
-@app.route('/produtos/<int:product_id>', methods=['PUT'])
-def update_products(product_id):
-    body = request.json
-    produtos.update(product_id, body)
-    return make_response(jsonify(
-        message='Produto atualizado com sucesso.',
-        produtos=produtos.getById(product_id)))
-
-
-    ############################################################################
-    ##                                                                        ##
-    ##                         ROTAS DE PARCEIROS                             ##
-    ##                                                                        ##
-    ############################################################################
-
-
-@app.route('/parceiros', methods=['GET'])
-def get_all_partners():
-    return make_response(jsonify(
-        parceiro.getAll()))
-
-@app.route('/parceiros/<int:parceiro_id>', methods=['GET'])
-def get_partner(parceiro_id):
-    return jsonify(
-        parceiro.getById(parceiro_id))
-
-@app.route('/parceiros', methods=['POST'])
-def create_partner():
-    body = request.json
-    parceiro.create(body)
-    return make_response(jsonify(
-        message='Parceiro cadastrado com sucesso.'))
-
-@app.route('/parceiros/<int:parceiro_id>', methods=['DELETE'])
-def delete_partners(parceiro_id):
-    parceiro.delete(parceiro_id)
-    return make_response(jsonify(
-        message='Parceiro excluido com sucesso.'))
-
-@app.route('/parceiros/<int:parceiro_id>', methods=['PUT'])
-def update_partners(parceiro_id):
-    body = request.json
-    parceiro.update(parceiro_id, body)
-    return make_response(jsonify(
-        message='Parceiro atualizado com sucesso.',
-        parceiro=parceiro.getById(parceiro_id)))
