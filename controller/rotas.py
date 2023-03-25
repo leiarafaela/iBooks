@@ -4,7 +4,7 @@ from model.Produtos import Produtos as produtos
 from model.Parceiros import Parceiros as parceiro
 from controller.regras_negocio import create_costumer_login, login_check, update_customer, create_parceiro_login
 
-app = Flask(__name__, template_folder='../view/templates')
+app = Flask(__name__, template_folder='../templates', static_folder='../static')
 app.config['JSON_SORT_KEYS'] = False
 
 
@@ -12,7 +12,7 @@ app.config['JSON_SORT_KEYS'] = False
 @app.route('/')
 @app.route('/home')
 def home():
-    return render_template('menu.html')
+    return render_template('index.html')
 
 
 ################ VISUALIZAÇÃO FORM E LOGIN ##########################
