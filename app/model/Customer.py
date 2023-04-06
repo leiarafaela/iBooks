@@ -16,8 +16,8 @@ class Customer():
 
     def create(customer):
         with closing(conectar_mysql()) as con, closing(con.cursor()) as cur:
-            cur.execute("INSERT INTO clientes (nome,email,cpf,celular,cidade,estado,bairro,numero,cep,complemento,logradouro) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)", [
-                customer['nome'], customer['email'], customer['cpf'], customer['celular'], customer['cidade'], customer['estado'], customer['bairro'], customer['numero'], customer['cep'], customer['complemento'], customer['logradouro']])
+            cur.execute("INSERT INTO clientes (nome,email,cpf,celular,cidade,estado,bairro,numero,cep,complemento,logradouro,is_active) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)", [
+                customer['nome'], customer['email'], customer['cpf'], customer['celular'], customer['cidade'], customer['estado'], customer['bairro'], customer['numero'], customer['cep'], customer['complemento'], customer['logradouro'], 'False'])
             customer = cur.lastrowid
             con.commit()
             con.close()

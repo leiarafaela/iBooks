@@ -30,3 +30,7 @@ sqlparse==0.4.3
 tzdata==2022.7
 urllib3==1.26.15
 Werkzeug==2.2.3
+idna==3.4
+PyJWT==2.6.0
+pytz==2023.3
+twilio==7.17.0

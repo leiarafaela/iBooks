@@ -36,12 +36,16 @@ def update_customer(costumer, auth):
 
 
 
-def login_check(auth):    
-    check = Auth.getByEmail(auth['email'])
+def login_check(auth):
+    check = Auth.getByEmail(auth['email']) 
+    if check is None:
+        return False
 
     verifyCheck = verificar_senha(auth['senha'],check['senha'], check['salt'])
-
-    return verifyCheck
+    if verifyCheck is None:
+        return False
+    else:
+        return verifyCheck
 
 
 def create_parceiro_login(parceiro, auth):

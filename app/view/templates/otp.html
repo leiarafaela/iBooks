@@ -18,10 +18,7 @@
       href="{{ url_for('static', filename = 'css/login.css') }}"
     />
     <title>Login</title>
-    {% if error %}
-      {{ error }}
-    {% endif %} 
-  </head> 
+  </head>
   <body>
     <!-- Barra de navegação -->
     <header>
@@ -51,23 +48,9 @@
       <div class="corpo-forms">
         <img src="../static/img/ibook_logo.png" alt="Logo-Ibook" />
         <form action="" method="POST">
-          <input type="email" name="email" id="id_email" placeholder="Email" />
-          
-          <input type="password" name="senha" id="id_senha" placeholder="Senha"/>
-
-          <button type="submit">Entrar</button><br />
- 
+          <input type="text" name="code" id="code" placeholder="Código de autenticação"/>
+          <button type="submit">Verificar</button><br />
         </form>
-        <div>
-          <a href="/google">
-            <button class="button">Google login</button>
-          </a>
-          <br></br>
-
-          <a class="button" href="/cliente/novo">
-            Não possui uma conta? Cadastra-se</a
-          >
-        </div>
       </div>
     </section>
 

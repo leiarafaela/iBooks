@@ -20,6 +20,7 @@ from google.oauth2 import id_token
 from google_auth_oauthlib.flow import Flow
 from pip._vendor import cachecontrol
 from oauthlib.oauth2 import WebApplicationClient
+from OTPverification.basics_OTP import verifica_otp, solicitar_otp
 import google.auth.transport.requests
 
 
@@ -48,14 +49,14 @@ def load_user(customer_id):
     return jsonify(
         customer.getById(customer_id)) 
 
-@app.route('/')
-def index():
-    if current_user.is_authenticated:
-        return(
-            '<p>Voce está logado</p>'
+# @app.route('/')
+# def index():
+#     if current_user.is_authenticated:
+#         return(
+#             '<p>Voce está logado</p>'
 
-        )
-    return '<a class="button" href="/google"> Google login</a>'
+#         )
+#     return '<a class="button" href="/google"> Google login</a>'
 
 
 @app.route("/google")
@@ -105,7 +106,7 @@ def callback():
     else:
         return "Email de usuário indisponível ou não verificado pelo Google", 400
     
-    customernew= {'id': unique_id, 'nome': users_name, 'email': users_email, 'cpf': None, 'celular': None, 'cidade': None, 'estado': None, 'bairro': None, 'numero': None, 'cep': None, 'complemento': None, 'logradouro': None}   
+    customernew = {'id': unique_id, 'nome': users_name, 'email': users_email, 'cpf': None, 'celular': None, 'cidade': None, 'estado': None, 'bairro': None, 'numero': None, 'cep': None, 'complemento': None, 'logradouro': None, 'is_active': False}   
     customer.create(customernew)
 
     login_user(customer)
@@ -122,23 +123,69 @@ def get_google_provider_cfg():
 
 
 ################ VISUALIZAÇÃO FORM E LOGIN ##########################
+@app.route('/', methods=['GET'])
+def show_index():
+    return make_response(redirect("/login"))
+    #return render_template('login.html')
+
 @app.route('/login', methods=['GET'])
 def show_login():
     return render_template('login.html')
 
 @app.route('/login', methods=['POST'])
 def login():
+    error = None
     infos_auth = {}
     for chave, valor in request.form.items():
+        if chave == "email" and valor == "":
+            error = "Informar email"
+            return render_template("login.html", error=error)
+            
+        if chave == "senha" and valor == "":
+            error = "Informar senha"
+            return render_template("login.html", error=error)
+            
         infos_auth[chave] = valor
-
+        
     logado = login_check(infos_auth)
 
-    if not logado:
-        return render_template("/login.html", erro="ERRO")
+    if logado is False:
+        error = 'Login invalido'
+        return render_template("login.html", error=error)
+
+    if logado is True: 
+        solicitar_otp()
+        return make_response(redirect("/otp")) #, render_template("otp.html")
+
     
-    return render_template("menu.html",  mensagem = "")
+@app.route('/otp', methods=['GET'])
+def show_otp():
+    return render_template('otp.html')
+
+
+@app.route('/otp', methods=['POST'])
+def verify_otp():
+    error = None
+    infos_auth = {}
+    for chave, valor in request.form.items(): 
+        infos_auth[chave] = valor
+        
+    retorno = verifica_otp(infos_auth['code'])
     
+    if retorno is False:
+        error = "Código inválido"
+    else:
+        return make_response(redirect("/menu"))
+    
+##############################################################################
+##                                                                          ##
+##                              MENU                                        ##
+##                                                                          ##
+##                                                                          ##
+##############################################################################
+@app.route('/menu', methods=['GET'])
+def show_menu():
+    return render_template('menu.html')
 
 
 ##############################################################################
