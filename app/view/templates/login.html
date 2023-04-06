@@ -4,10 +4,9 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../styles/css/default.css" />
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename = 'img/ibook_logo.css') }}" />
     <link rel="stylesheet" href="{{ url_for('static', filename = 'css/default.css') }}"/>
     <link rel="stylesheet" href="{{ url_for('static', filename = 'css/login.css') }}"/>
-    <link rel="stylesheet" href="../styles/css/login.css" />
     <title>Login</title>
    
   </head>
@@ -31,8 +30,15 @@
             id="id_senha"
             placeholder="Senha"
           />
-          <button type="submit">Entrar</button><br><br>
+          <button type="submit">Entrar</button><br>
         </form>
+        <div>
+          <a href="/google">
+             <button class="button" > Google login</button>
+          </a>
+         
+          <a class="button" href="/cliente/novo"> Não possui uma conta? Cadastra-se</a>
+        </div>
       </div>
     </section>
     

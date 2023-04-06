@@ -4,9 +4,9 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/x-icon" href="../styles/img/ibook_logo.png" />
-    <link rel="stylesheet" href="../styles/css/default.css" />
-    <link rel="stylesheet" href="../styles/css/cadastro-cliente.css" />
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename = 'img/ibook_logo.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/default.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/cadastro-cliente.css') }}" />
     <title>Criar</title>
   </head>
   <body>
@@ -55,18 +55,15 @@
                 type="cpf"
                 name="cpf"
                 placeholder="Digite seu cpf"
-                required
               />
             </div>
-
             <div class="input-box">
               <label for="number">Celular</label>
               <input
                 id="number"
                 type="tel"
                 name="celular"
-                placeholder="(xx) xxxxx-xxxx"
-                required
+                placeholder="(xx) xxxxx-xxxx"            
               />
             </div>
 
@@ -76,8 +73,7 @@
                 id="password"
                 type="password"
                 name="senha"
-                placeholder="Digite sua senha"
-                required
+                placeholder="Digite sua senha"             
               />
             </div>
 
@@ -87,8 +83,7 @@
                 id="cidade"
                 type="cidade"
                 name="cidade"
-                placeholder="cidade"
-                required
+                placeholder="cidade"            
               />
             </div>
             <div class="input-box">
@@ -130,8 +125,7 @@
                 id="bairro"
                 type="text"
                 name="bairro"
-                placeholder="Digite seu bairro"
-                required
+                placeholder="Digite seu bairro"              
               />
             </div>
             <div class="input-box">
@@ -140,9 +134,7 @@
                 id="logradouro"
                 type="text"
                 name="logradouro"
-                placeholder="Digite seu logradouro"
-                n
-                required
+                placeholder="Digite seu logradouro"            
               />
             </div>
             <div class="input-box">
@@ -151,8 +143,7 @@
                 id="numero"
                 type="text"
                 name="numero"
-                placeholder="Digite o número do local"
-                required
+                placeholder="Digite o número do local"             
               />
             </div>
             <div class="input-box">
@@ -161,8 +152,7 @@
                 id="complemento"
                 type="text"
                 name="complemento"
-                placeholder="Digite o complemento"
-                required
+                placeholder="Digite o complemento"    
               />
             </div>
             <div class="input-box">
@@ -172,7 +162,6 @@
                 type="number"
                 name="cep"
                 placeholder="Digite o cep do local"
-                required
               />
             </div>
           </div>
