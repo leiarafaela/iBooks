@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="{{ url_for('static', filename = 'img/ibook_logo.png') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename = 'css/default.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename = 'css/login.css') }}"
+    />
+    <title>IBook</title>
+  </head>
+  <body>
+    <!-- Barra de navegação -->
+    <header>
+      <nav>
+        <a href="/"
+          ><img src="../static/img/ibook_logo.png" alt=""
+        /></a>
+        <ul class="nav-links">
+          <li><a href="">Lorem</a></li>
+          <li><a href="">Lorem</a></li>
+          <li><a href="">Lorem</a></li>
+          <li><a href="">Lorem</a></li>
+        </ul>
+        <!-- Botão que encaminha para a tela de login -->
+        <a class="btn_login" href="/login">
+            <button>Login</button>
+        </a>
+      </nav>
+    </header>
+     
+      <div class="container">
+        <!-- Exemplo de linha de colunas -->
+        <div class="row">
+          <div class="col-md-4">
+            <h2>Título</h2>
+            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+            <p><a class="btn btn-secondary" href="#" role="button">Ver detalhes &raquo;</a></p>
+          </div>
+          <div class="col-md-4">
+            <h2>Título</h2>
+            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+            <p><a class="btn btn-secondary" href="#" role="button">Ver detalhes &raquo;</a></p>
+          </div>
+          <div class="col-md-4">
+            <h2>Título</h2>
+            <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+            <p><a class="btn btn-secondary" href="#" role="button">Ver detalhes &raquo;</a></p>
+          </div>
+        </div>  
+        <hr> 
+      </div>  
+
+    <footer>
+      <p> Em desenvolvimento...</p>
+    </footer>
+    </body>
+</html>
+
+<!--<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="../styles/img/ibook_logo.png" />
+    <link rel="stylesheet" href="../styles/css/default.css" />
+    <link rel="stylesheet" href="../styles/css/login.css" />
+    <title>Home</title>
+  </head>
+  <body>
+    <header>
+        <nav>
+            <p>Ibook sua plataforma de Delivery livros</p>
+        </nav>
+    </header>
+    <p><a href="/login">Fazer login como usuario</a></p>
+    <p><a href="/login">Fazer login como parceiro</a></p>
+    <p><a href="/cliente/novo">Cadastrar-se como usuario</a></p>
+    <p><a href="/parceiro/novo">Cadastrar-se como parceiro</a></p>
+    <p><a href="/login">Fazer login como Admin</a></p>
+  </body>--> 

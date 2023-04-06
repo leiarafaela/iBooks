@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename = 'img/ibook_logo.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/default.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/cadastro-cliente.css') }}" />
+    <title>Criar</title>
+  </head>
+  <body>
+    <!-- Menu de navegação -->
+    <header>
+      <nav>
+        <a href="/">voltar</a>
+    </header>
+    <!-- Bloco onde fica o formulário -->
+    <div class="container">
+      <div class="form">
+        <form action="{{ url_for('create_customer') }}" method="POST" enctype="multipart/form-data">
+          <div class="form-header">
+            <div class="title">
+              <h1>Cadastre-se</h1>
+            </div>
+          </div>
+
+          <div class="input-group">
+            <div class="input-box">
+              <label for="nameComplete">Nome completo</label>
+              <input
+                id="nameComplete"
+                type="text"
+                name="nome"
+                placeholder="Digite seu nome completo"
+                required
+              />
+            </div>
+
+            <div class="input-box">
+              <label for="email">E-mail</label>
+              <input
+                id="email"
+                type="email"
+                name="email"
+                placeholder="Digite seu e-mail"
+                required
+              />
+            </div>
+
+            <div class="input-box">
+              <label for="cpf">cpf</label>
+              <input
+                id="cpf"
+                type="cpf"
+                name="cpf"
+                placeholder="Digite seu cpf"
+              />
+            </div>
+            <div class="input-box">
+              <label for="number">Celular</label>
+              <input
+                id="number"
+                type="tel"
+                name="celular"
+                placeholder="(xx) xxxxx-xxxx"            
+              />
+            </div>
+
+            <div class="input-box">
+              <label for="password">Senha</label>
+              <input
+                id="password"
+                type="password"
+                name="senha"
+                placeholder="Digite sua senha"             
+              />
+            </div>
+
+            <div class="input-box">
+              <label for="cidade">Cidade</label>
+              <input
+                id="cidade"
+                type="cidade"
+                name="cidade"
+                placeholder="cidade"            
+              />
+            </div>
+            <div class="input-box">
+              <label for="UF">Estado</label>
+              <select id="UF" name="estado">
+                <option value="">Selecione</option>
+                <option value="AC">Acre</option>
+                <option value="AL">Alagoas</option>
+                <option value="AP">Amapá</option>
+                <option value="AM">Amazonas</option>
+                <option value="BA">Bahia</option>
+                <option value="CE">Ceará</option>
+                <option value="DF">Distrito Federal</option>
+                <option value="ES">Espirito Santo</option>
+                <option value="GO">Goiás</option>
+                <option value="MA">Maranhão</option>
+                <option value="MS">Mato Grosso do Sul</option>
+                <option value="MT">Mato Grosso</option>
+                <option value="MG">Minas Gerais</option>
+                <option value="PA">Pará</option>
+                <option value="PB">Paraíba</option>
+                <option value="PR">Paraná</option>
+                <option value="PE">Pernambuco</option>
+                <option value="PI">Piauí</option>
+                <option value="RJ">Rio de Janeiro</option>
+                <option value="RN">Rio Grande do Norte</option>
+                <option value="RS">Rio Grande do Sul</option>
+                <option value="RO">Rondônia</option>
+                <option value="RR">Roraima</option>
+                <option value="SC">Santa Catarina</option>
+                <option value="SP">São Paulo</option>
+                <option value="SE">Sergipe</option>
+                <option value="TO">Tocantins</option>
+              </select>
+            </div>
+            <div class="input-box">
+              <label for="bairro">Bairro</label>
+              <input
+                id="bairro"
+                type="text"
+                name="bairro"
+                placeholder="Digite seu bairro"              
+              />
+            </div>
+            <div class="input-box">
+              <label for="logradouro">Logradouro</label>
+              <input
+                id="logradouro"
+                type="text"
+                name="logradouro"
+                placeholder="Digite seu logradouro"            
+              />
+            </div>
+            <div class="input-box">
+              <label for="numero">Número</label>
+              <input
+                id="numero"
+                type="text"
+                name="numero"
+                placeholder="Digite o número do local"             
+              />
+            </div>
+            <div class="input-box">
+              <label for="complemento">Complemento</label>
+              <input
+                id="complemento"
+                type="text"
+                name="complemento"
+                placeholder="Digite o complemento"    
+              />
+            </div>
+            <div class="input-box">
+              <label for="cep">CEP</label>
+              <input
+                id="cep"
+                type="number"
+                name="cep"
+                placeholder="Digite o cep do local"
+              />
+            </div>
+            <div class="input-box" stylesheet="display: none;">
+              <input
+                id="is_active"
+                type="is_active"
+                name="is_active"
+                value="True"
+                placeholder=""
+              />
+            </div>
+
+          </div>
+
+          <div class="continue-button">
+            <button type="submit" value="Enviar"></button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <footer></footer>
+  </body>
+</html>

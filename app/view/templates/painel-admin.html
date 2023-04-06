@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../styles/css/default.css" />
+    <link rel="stylesheet" href="../styles/css/painel-parceiro.css" />
+    <title>painel Admin</title>
+  </head>
+  <body>
+    <header>
+        <h1>Ações Admin</h1>
+        <p><a href="/">Voltar</a></p>
+    </header>
+    <div class="container">
+        <h2>Listagem de usuarios</h2>
+        <div class="row">
+          <div class="col-xs-12">
+            <table class="tab">
+              <thead>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Ações</th>
+              </thead>
+              <tbody>
+                {% for user in  usuarios %}
+                <tr>
+                  <td>{{ user.nome }}</td>
+                  <td>{{ user.email }}</td>
+                  <td>
+                    <a href="/atualizar/{{ user['id'] }}" class="btn-editar">Editar</a>
+                  </td>
+                  <td>
+                    <a href="{{ url_for('delete_customers', customer_id = user['id']) }}" methods="DELETE" class="btn-editar">Excluir</a>
+                  </td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+    
