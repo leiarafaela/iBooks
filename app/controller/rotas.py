@@ -157,7 +157,12 @@ def login():
         solicitar_otp()
         return make_response(redirect("/otp")) #, render_template("otp.html")
 
-    
+##############################################################################
+##                                                                          ##
+##                              OTP                                         ##
+##                                                                          ##
+##############################################################################
+
 @app.route('/otp', methods=['GET'])
 def show_otp():
     return render_template('otp.html')
@@ -174,6 +179,7 @@ def verify_otp():
     
     if retorno is False:
         error = "Código inválido"
+        return render_template("otp.html", error=error)
     else:
         return make_response(redirect("/menu"))
     
@@ -269,7 +275,6 @@ def update(customer_id):
 ##############################################################################
 ##                                                                           ##
 ##                              CRUD PARCEIROS                               ##
-##                                                                           ##
 ##                                                                           ##
 ##############################################################################
 
