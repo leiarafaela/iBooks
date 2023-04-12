@@ -18,9 +18,7 @@ from google.oauth2 import id_token
 from google_auth_oauthlib.flow import Flow
 from pip._vendor import cachecontrol
 from oauthlib.oauth2 import WebApplicationClient
-from OTPverification.basics_OTP import verifica_otp, solicitar_otp
 import google.auth.transport.requests
-
 
 load_dotenv()
 app = Flask(__name__, template_folder='../view/templates', static_folder='../view/static')
@@ -35,7 +33,7 @@ GOOGLE_DISCOVERY_URL = ("https://accounts.google.com/.well-known/openid-configur
 login_manager=LoginManager()
 login_manager.init_app(app)
 
-login = Blueprint('login', __name__)
+google_bp = Blueprint('google_bp', __name__)
 
 @login_manager.unauthorized_handler
 def unauthorized():
@@ -58,7 +56,7 @@ def load_user(customer_id):
 #     return '<a class="button" href="/google"> Google login</a>'
 
 
-@login.route("/google")
+@google_bp.route("/google")
 def login_google():
     google_provider_cfg = get_google_provider_cfg()
     authorization_endpoint = google_provider_cfg['authorization_endpoint'] 
@@ -70,7 +68,7 @@ def login_google():
     )
     return redirect(request_uri)
 
-@app.route('/google/callback')
+@google_bp.route('/google/callback')
 def callback():
     code = request.args.get('code')
 
@@ -110,8 +108,6 @@ def callback():
 
     login_user(customer)
     return redirect(url_for('index'))
-
-
 
 def get_google_provider_cfg():
     return requests.get(GOOGLE_DISCOVERY_URL).json() 

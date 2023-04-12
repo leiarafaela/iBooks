@@ -1,4 +1,3 @@
-
 import os
 from dotenv import load_dotenv
 from flask import Blueprint, Flask, make_response, jsonify, render_template, redirect, request
@@ -6,7 +5,6 @@ from controller.regras_negocio import create_costumer_login
 from model.Customer import Customer as customer
 
 cliente_bp = Blueprint('cliente_bp', __name__)
-
 
 @cliente_bp.route('/clientes', methods=['GET'])
 def get_all_customers():
@@ -40,7 +38,6 @@ def create_customer():
     infos_auth['tipo_acesso'] = 1
     newCustomer = create_costumer_login(infos_custumer, infos_auth)
 
-
     message = f"O usuario {newCustomer} foi criado com sucesso."
 
     return render_template('menu.html', message=message)
@@ -51,7 +48,6 @@ def delete_customer(customer_id):
     if cliente is not None:
         customer.delete(customer_id)
     return render_template('menu.html')
-
 
 
 @cliente_bp.route('/atualizar/<int:customer_id>', methods=['GET'])
@@ -71,9 +67,7 @@ def update(customer_id):
 
         infos_customer[chave] = valor
 
-
     updateCustomer = customer.update(infos_customer, customer_id)
-
 
     message = f"O usuario {updateCustomer} foi atualizado com sucesso."
 

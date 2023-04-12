@@ -3,8 +3,7 @@ from model.Connection import conectar_mysql
 from util import row_to_dict, rows_to_dict
 
 
-
-class Produtos():
+class Produto():
     def getAll():
         with closing(conectar_mysql()) as con, closing(con.cursor()) as cur:
             cur.execute("SELECT * FROM produtos")
