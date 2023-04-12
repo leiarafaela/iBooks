@@ -18,9 +18,6 @@
       href="{{ url_for('static', filename = 'css/login.css') }}"
     />
     <title>Login</title>
-    {% if error %}
-      {{ error }}
-    {% endif %} 
   </head> 
   <body>
     <!-- Barra de navegação -->
@@ -39,7 +36,7 @@
           <li><a href="">Lorem</a></li>
           <li><a href="">Lorem</a></li>
           <li><a href="">Lorem</a></li>
-        </ul>
+        </ul> 
         <!-- Botão que encaminha para a tela de login -->
         <a class="btn_login" href="/login">
             <button>Login</button>
@@ -56,7 +53,13 @@
           <input type="password" name="senha" id="id_senha" placeholder="Senha"/>
 
           <button type="submit">Entrar</button><br />
- 
+          <div class="error">
+            <b>
+            {% if error %}
+              {{ error }}
+            {% endif %}
+            </b>
+          </div>
         </form>
         <div>
           <a href="/google">
@@ -64,9 +67,9 @@
           </a>
           <br></br>
 
-          <a class="button" href="/cliente/novo">
+          <!--<a class="button" href="/cliente/novo">
             Não possui uma conta? Cadastra-se</a
-          >
+          >-->
         </div>
       </div>
     </section>
