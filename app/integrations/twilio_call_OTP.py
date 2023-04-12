@@ -12,17 +12,17 @@ verify_sid=os.getenv('verify_sid')
 client= Client(account_sid, auth_token)
 
 def solicitar_otp():
-    otp_verification=client.verify.services(verify_sid).verifications.create(
+    client.verify.services(verify_sid).verifications.create(
     to=my_number, channel="call"
     ) 
       
 
 def verifica_otp(otp_code):
-        otp_vcheck=client.verify.services(verify_sid).verification_checks.create(
+        otp_verification_check=client.verify.services(verify_sid).verification_checks.create(
             to=my_number, code=otp_code
         )
         # Verificar se a verificação foi aprovada
-        if otp_vcheck.status == 'approved':
+        if otp_verification_check.status == 'approved':
             return True
         else:
             return False

@@ -3,7 +3,7 @@ from dotenv import load_dotenv
 from flask import Blueprint, Flask, make_response, jsonify, render_template, redirect, request
 from model.Customer import Customer as customer
 from controller.regras_negocio import create_costumer_login, login_check, create_parceiro_login
-from OTPverification.basics_OTP import verifica_otp, solicitar_otp
+from integrations.twilio_call_OTP import verifica_otp, solicitar_otp
 
 login_bp = Blueprint('login', __name__)
 
