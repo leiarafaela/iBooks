@@ -34,3 +34,5 @@ idna==3.4
 PyJWT==2.6.0
 pytz==2023.3
 twilio==7.17.0
+flask-login==0.6.2
+pyrebase==4.6.0

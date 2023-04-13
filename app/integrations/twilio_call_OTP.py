@@ -9,15 +9,17 @@ my_number=os.getenv('my_number')
 twilio_number=os.getenv('twilio_number')
 verify_sid=os.getenv('verify_sid')
 
-client= Client(account_sid, auth_token)
 
 def solicitar_otp():
+    client= Client(account_sid, auth_token)
     client.verify.services(verify_sid).verifications.create(
     to=my_number, channel="call"
     ) 
       
 
 def verifica_otp(otp_code):
+        client= Client(account_sid, auth_token)
+
         otp_verification_check=client.verify.services(verify_sid).verification_checks.create(
             to=my_number, code=otp_code
         )
