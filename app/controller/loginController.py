@@ -1,5 +1,4 @@
 import os
-from dotenv import load_dotenv
 from flask import Blueprint, Flask, make_response, jsonify, render_template, redirect, request
 from model.Customer import Customer as customer
 from controller.regras_negocio import create_costumer_login, login_check, create_parceiro_login
@@ -48,7 +47,6 @@ def show_otp():
 
 @login_bp.route('/otp', methods=['POST'])
 def verify_otp():
-    error = None
     infos_auth = {}
     for chave, valor in request.form.items(): 
         infos_auth[chave] = valor
@@ -56,6 +54,15 @@ def verify_otp():
     retorno = verifica_otp(infos_auth['code'])
     
     if retorno is False:
-        error = "Código inválido"
+        return make_response(redirect("/otp"))
     else:
-        return make_response(redirect("/menu"))
+        return make_response(redirect("/home"))
+    
+@login_bp.route('/home', methods=['GET'])
+def show_home():
+
+    return render_template('home.html')
+
+@login_bp.route('/reset', methods=['GET'])
+def show_reset():
+    return render_template('reset-password.html')
