@@ -13,18 +13,17 @@
     <!-- Menu de navegação -->
     <header>
       <nav>
-        <a href="/">voltar</a>
+        <a href="/">Voltar</a>
     </header>
     <!-- Bloco onde fica o formulário -->
     <div class="container">
       <div class="form">
-        <form action="{{ url_for('create_customer') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ url_for('cliente_bp.create_customer') }}" method="POST" enctype="multipart/form-data">
           <div class="form-header">
             <div class="title">
               <h1>Cadastre-se</h1>
             </div>
           </div>
-
           <div class="input-group">
             <div class="input-box">
               <label for="nameComplete">Nome completo</label>
@@ -49,7 +48,7 @@
             </div>
 
             <div class="input-box">
-              <label for="cpf">cpf</label>
+              <label for="cpf">CPF</label>
               <input
                 id="cpf"
                 type="cpf"
@@ -177,11 +176,11 @@
           </div>
 
           <div class="continue-button">
-            <button type="submit" value="Enviar"></button>
+            <button type="submit" value="Salvar"></button>
           </div>
         </form>
       </div>
-    </div>
-    <footer></footer>
+    </div>  
   </body>
+
 </html>
