@@ -1,8 +1,6 @@
-import os
-from dotenv import load_dotenv
-from flask import Blueprint, Flask, make_response, jsonify, render_template, redirect, request
-from controller.regras_negocio import create_costumer_login
-from model.Customer import Customer as customer
+from flask import Blueprint, jsonify, render_template, request
+from controllers.regras_negocio import create_costumer_login
+from models.Customer import Customer as customer
 
 cliente_bp = Blueprint('cliente_bp', __name__)
 

@@ -1,9 +1,9 @@
 import os
 from flask import Flask
-from controller.loginController import login_bp
-from controller.customerController import cliente_bp
-from controller.parceiroController import parceiro_bp
-from controller.googleController import google_bp
+from controllers.loginController import login_bp
+from controllers.customerController import cliente_bp
+from controllers.parceiroController import parceiro_bp
+from controllers.googleController import google_bp
 
 app = Flask(__name__, template_folder='view/templates', static_folder='view/static')
 app.config['JSON_SORT_KEYS'] = False

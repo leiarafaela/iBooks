@@ -1,10 +1,10 @@
-from model.Customer import Customer 
-from model.Produto import Produto
-from model.Parceiro import Parceiro
-from model.Auth import Auth
+from models.Customer import Customer 
+from models.Produto import Produto
+from models.Parceiro import Parceiro
+from models.Auth import Auth
 from util import criptografar_senha, verificar_senha
 
-def  create_costumer_login(costumer, auth):
+def create_costumer_login(costumer, auth):
     create_custumer = Customer.create(costumer)
     crip, salt = criptografar_senha(auth['senha'])
     auth['senha'] = crip

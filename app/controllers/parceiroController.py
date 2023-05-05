@@ -1,8 +1,8 @@
 import os
 from dotenv import load_dotenv
 from flask import Blueprint, Flask, make_response, jsonify, render_template, redirect, request
-from controller.regras_negocio import create_parceiro_login
-from model.Parceiro import Parceiro as parceiro
+from controllers.regras_negocio import create_parceiro_login
+from models.Parceiro import Parceiro as parceiro
 
 parceiro_bp = Blueprint('parceiro_bp', __name__)
 

@@ -1,7 +1,7 @@
 import os
-from flask import Blueprint, Flask, make_response, jsonify, render_template, redirect, request
-from model.Customer import Customer as customer
-from controller.regras_negocio import create_costumer_login, login_check, create_parceiro_login
+from flask import Blueprint, make_response, render_template, redirect, request
+from models.Customer import Customer as customer
+from controllers.regras_negocio import create_costumer_login, login_check, create_parceiro_login
 from integrations.twilio_call_OTP import verifica_otp, solicitar_otp
 
 login_bp = Blueprint('login', __name__)
