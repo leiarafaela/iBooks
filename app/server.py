@@ -5,7 +5,7 @@ from controllers.customerController import cliente_bp
 from controllers.parceiroController import parceiro_bp
 from controllers.googleController import google_bp
 
-app = Flask(__name__, template_folder='view/templates', static_folder='view/static')
+app = Flask(__name__, template_folder='views/templates', static_folder='views/static')
 app.config['JSON_SORT_KEYS'] = False
 app.secret_key = os.getenv('SECRET_KEY') or os.urandom(24)
 
