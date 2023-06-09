@@ -38,7 +38,7 @@ def create_customer():
 
     message = f"O usuario {newCustomer} foi criado com sucesso."
 
-    return render_template('menu.html', message=message)
+    return render_template('login.html', message=message)
 
 @cliente_bp.route('/delete/<int:customer_id>', methods= ['GET','DELETE'])
 def delete_customer(customer_id):

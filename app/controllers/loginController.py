@@ -7,10 +7,6 @@ from integrations.twilio_call_OTP import verifica_otp, solicitar_otp
 login_bp = Blueprint('login', __name__)
 
 @login_bp.route('/', methods=['GET'])
-def show_index():
-    return make_response(redirect("/login"))
-    #return render_template('login.html')
-
 @login_bp.route('/login', methods=['GET'])
 def show_login():
     return render_template('login.html')

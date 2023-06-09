@@ -31,17 +31,9 @@
             alt="Logo-Ibook"
           />
         </a>
-        <ul class="nav-links">
-          <li><a href="">Lorem</a></li>
-          <li><a href="">Lorem</a></li>
-          <li><a href="">Lorem</a></li>
-          <li><a href="">Lorem</a></li>
-        </ul> 
-        <!-- Botão que encaminha para a tela de login -->
-        <a class="btn_login" href="/login">
-            <button>Login</button>
-        </a>
+        <ul class="nav-links"></ul> 
       </nav>
+
     </header>
     <!-- Formulário de login -->
     <section class="container">
@@ -51,22 +43,16 @@
           <input type="email" name="email" id="id_email" placeholder="Email" />
           
           <input type="password" name="senha" id="id_senha" placeholder="Senha"/>
-
           <button type="submit">Entrar</button><br />
-          <div class="error">
-            <b>
-            {% if error %}
-              {{ error }}
-            {% endif %}
-            </b>
-          </div>
         </form>
-        <div>
-          <a href="/google">
-            <button class="button">Google login</button>
-          </a>
-          <br></br>
 
+        <a href="/google">
+        <button type="button" class="login-with-google-btn" >
+          Sign in with Google
+        </button>
+      </a>
+        <div>
+          
           <a class="button" href="/cliente/novo">
             Não possui uma conta? Cadastra-se</a
           >

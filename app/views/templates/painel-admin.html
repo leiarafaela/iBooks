@@ -32,7 +32,7 @@
                     <a href="/atualizar/{{ user['id'] }}" class="btn-editar">Editar</a>
                   </td>
                   <td>
-                    <a href="{{ url_for('delete_customers', customer_id = user['id']) }}" methods="DELETE" class="btn-editar">Excluir</a>
+                    <a href="{{ url_for('cliente_bp.delete_customer', customer_id = user['id']) }}" methods="DELETE" class="btn-editar">Excluir</a>
                   </td>
                 </tr>
                 {% endfor %}
