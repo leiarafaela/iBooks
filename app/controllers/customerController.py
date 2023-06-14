@@ -4,7 +4,7 @@ from models.Customer import Customer as customer
 
 cliente_bp = Blueprint('cliente_bp', __name__)
 
-@cliente_bp.route('/clientes', methods=['GET'])
+@cliente_bp.route('/admin', methods=['GET'])
 def get_all_customers():
     list_customer = customer.getAll()
 
@@ -45,7 +45,7 @@ def delete_customer(customer_id):
     cliente=customer.getById(customer_id)
     if cliente is not None:
         customer.delete(customer_id)
-    return make_response(redirect('/clientes'))
+    return make_response(redirect('/admin'))
 
 
 @cliente_bp.route('/atualizar/<int:customer_id>', methods=['GET'])

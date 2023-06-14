@@ -38,5 +38,6 @@ class Customer():
     def delete(id):
         with closing(conectar_mysql()) as con, closing(con.cursor()) as cur:
             cur.execute("DELETE FROM clientes WHERE id = %s", [id])
+            
             con.commit()
             con.close()
