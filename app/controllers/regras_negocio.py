@@ -34,12 +34,12 @@ def update_customer(costumer, auth):
     return update_customer
 
 
-def login_check(auth):
+def  login_check(auth):
     check = Auth.getByEmail(auth['email']) 
     if check is None:
         return False
 
-    verifyCheck = verificar_senha(auth['senha'],check['senha'], check['salt'])
+    verifyCheck = verificar_senha(auth['senha'], check['senha'], check['salt'])
     if verifyCheck is None:
         return False
     else:

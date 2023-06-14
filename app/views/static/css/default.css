@@ -75,6 +75,7 @@ footer{
   background-color: gray;
   position: absolute;
   bottom: 0;
+  vertical-align: bottom;
 }
 .error{
   color: red;

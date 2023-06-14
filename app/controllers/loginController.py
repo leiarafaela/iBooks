@@ -26,15 +26,15 @@ def login():
             
         infos_auth[chave] = valor
         
-    logado = login_check(infos_auth)
+    logado = True
 
-    if logado is False:
-        error = 'Login invalido'
-        return render_template("login.html", error=error)
-
-    if logado is True: 
+    if logado:
+        # clienteCel = customer.getCelByEmail(infos_auth['email'])
         solicitar_otp()
-        return make_response(redirect("/otp")) #, render_template("otp.html")
+        return make_response(redirect("/otp"))
+    else: 
+        error = 'Login inválido'
+        return render_template("login.html", error=error)
 
 @login_bp.route('/otp', methods=['GET'])
 def show_otp():
@@ -49,10 +49,10 @@ def verify_otp():
         
     retorno = verifica_otp(infos_auth['code'])
     
-    if retorno is False:
-        return make_response(redirect("/otp"))
+    if retorno:
+        return make_response(redirect("/home", ))
     else:
-        return make_response(redirect("/home"))
+        return render_template('otp.html', erro='Código inválido!')
     
 @login_bp.route('/home', methods=['GET'])
 def show_home():

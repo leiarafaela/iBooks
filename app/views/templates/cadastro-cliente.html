@@ -13,7 +13,19 @@
     <!-- Menu de navegação -->
     <header>
       <nav>
-        <a href="/">Voltar</a>
+        <a href="/login"
+          ><img
+            src="../static/img/ibook_logo.png"
+            width="100"
+            height="100"
+            alt="Logo-Ibook"
+          />
+        </a>
+        <ul class="nav-links">
+          <li><a href="/">Voltar</a></li>
+        </ul>      
+      </nav>
+      
     </header>
     <!-- Bloco onde fica o formulário -->
     <div class="container">
@@ -26,15 +38,25 @@
           </div>
           <div class="input-group">
             <div class="input-box">
-              <label for="nameComplete">Nome completo</label>
+              <label for="name">Nome</label>
               <input
-                id="nameComplete"
+                id="name"
                 type="text"
                 name="nome"
-                placeholder="Digite seu nome completo"
+                placeholder="Digite seu nome"
                 required
               />
             </div>
+
+            <div class="input-box">
+              <label for="sobronome">Sobrenome</label>
+              <input
+                id="sobronome"
+                type="text"
+                name="sobrenome"
+                placeholder="Digite seu sobronome"                
+                />
+              </div>
 
             <div class="input-box">
               <label for="email">E-mail</label>
@@ -47,15 +69,6 @@
               />
             </div>
 
-            <div class="input-box">
-              <label for="cpf">CPF</label>
-              <input
-                id="cpf"
-                type="cpf"
-                name="cpf"
-                placeholder="Digite seu cpf"
-              />
-            </div>
             <div class="input-box">
               <label for="number">Celular</label>
               <input
@@ -72,7 +85,18 @@
                 id="password"
                 type="password"
                 name="senha"
-                placeholder="Digite sua senha"             
+                placeholder="Crie uma senha segura" 
+                required            
+              />
+            </div>
+
+            <div class="input-box">
+              <label for="cep">CEP</label>
+              <input
+                id="cep"
+                type="cep"
+                name="cep"
+                placeholder="Digite o cep do local"
               />
             </div>
 
@@ -154,33 +178,12 @@
                 placeholder="Digite o complemento"    
               />
             </div>
-            <div class="input-box">
-              <label for="cep">CEP</label>
-              <input
-                id="cep"
-                type="number"
-                name="cep"
-                placeholder="Digite o cep do local"
-              />
-            </div>
-            <div class="input-box" stylesheet="display: none;">
-              <input
-                id="is_active"
-                type="is_active"
-                name="is_active"
-                value="True"
-                placeholder=""
-              />
-            </div>
-
-          </div>
 
           <div class="continue-button">
-            <button type="submit" value="Salvar"></button>
+            <button type="submit" value="Salvar">Salvar</button>
           </div>
         </form>
       </div>
     </div>  
   </body>
-
 </html>

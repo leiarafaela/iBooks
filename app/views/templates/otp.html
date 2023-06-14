@@ -23,7 +23,7 @@
     <!-- Barra de navegação -->
     <header>
       <nav>
-        <a href="/"
+        <a href="/login"
           ><img
             src="../static/img/ibook_logo.png"
             width="100"
@@ -31,32 +31,23 @@
             alt="Logo-Ibook"
           />
         </a>
-        <ul class="nav-links">
-          <li><a href="">Lorem</a></li>
-          <li><a href="">Lorem</a></li>
-          <li><a href="">Lorem</a></li>
-          <li><a href="">Lorem</a></li>
-        </ul>
+        <ul class="nav-links"></ul>
         
         <a class="btn_login" href="/login">
-            <button>Login</button>
+            <button>Sair</button>
         </a>
       </nav>
     </header>
     <!-- Formulário de login -->
+    {% if erro %}
+        <script>alert('{{erro}}')</script>
+    {% endif %}
     <section class="container">
       <div class="corpo-forms">
         <img src="../static/img/ibook_logo.png" alt="Logo-Ibook" />
         <form action="" method="POST">
-          <h4>Informe o código enviado por telefone:</h4>
+          <h4>Digite o código informado via ligação:</h4>
           <input type="text" name="code" id="code" placeholder="Código de autenticação"/>
-          <div class="error">
-            <b>
-            {% if error %}
-              {{ error }}
-            {% endif %}
-            </b>
-          </div>
           <button type="submit">Verificar</button><br />
         </form>
       </div>

@@ -4,24 +4,44 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/x-icon" href="../styles/img/ibook_logo.png" />
-    <link rel="stylesheet" href="../styles/css/default.css" />
-    <link rel="stylesheet" href="../styles/css/cadastro-cliente.css" />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="{{ url_for('static', filename = 'img/ibook_logo.png') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename = 'css/default.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename = 'css/painel-parceiro.css') }}"
+    />
     <title>Atualizar</title>
   </head>
   <body>
     <!-- Menu de navegação -->
     <header>
       <nav>
-        <a href="/">voltar</a>
+        <a href="/login"
+          ><img
+            src="../static/img/ibook_logo.png"
+            width="100"
+            height="100"
+            alt="Logo-Ibook"
+          />
+        </a>
+     
+        <ul class="nav-links">
+          <li><a href="/clientes">Voltar</a></li>
+        </ul> 
+      </nav>
     </header>
     <!-- Bloco onde fica o formulário -->
     <div class="container">
       <div class="form">
         <form action="/atualizar/{{ cliente['id'] }}" method="POST" enctype="multipart/form-data">
-        {% if cliente['id'] != 0 %}
-                {{cliente['id']}}
-      {% endif %}
+       
       <p>
           <div class="form-header">
             <div class="title">

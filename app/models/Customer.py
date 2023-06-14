@@ -13,11 +13,16 @@ class Customer():
         with closing(conectar_mysql()) as con, closing(con.cursor()) as cur:
             cur.execute("SELECT * FROM clientes WHERE id= %s", [id])
             return row_to_dict(cur.description, cur.fetchone())
+        
+    def getCelByEmail(email):
+        with closing(conectar_mysql()) as con, closing(con.cursor()) as cur:
+            cur.execute("SELECT celular FROM clientes WHERE email= %s", [email])
+            return row_to_dict(cur.description, cur.fetchone())
 
     def create(customer):
         with closing(conectar_mysql()) as con, closing(con.cursor()) as cur:
-            cur.execute("INSERT INTO clientes (nome,email,cpf,celular,cidade,estado,bairro,numero,cep,complemento,logradouro,is_active) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)", [
-                customer['nome'], customer['email'], customer['cpf'], customer['celular'], customer['cidade'], customer['estado'], customer['bairro'], customer['numero'], customer['cep'], customer['complemento'], customer['logradouro'], 'False'])
+            cur.execute("INSERT INTO clientes (nome, sobrenome, email, celular, senha) VALUES (%s, %s, %s, %s, %s)", [
+                customer['nome'], customer['sobrenome'], customer['email'], customer['celular'], customer['senha'],])
             customer = cur.lastrowid
             con.commit()
             con.close()

@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify, render_template, request
+from flask import Blueprint, jsonify, make_response, redirect, render_template, request
 from controllers.regras_negocio import create_costumer_login
 from models.Customer import Customer as customer
 
@@ -38,14 +38,14 @@ def create_customer():
 
     message = f"O usuario {newCustomer} foi criado com sucesso."
 
-    return render_template('login.html', message=message)
+    return make_response(redirect("/login"))
 
 @cliente_bp.route('/delete/<int:customer_id>', methods= ['GET','DELETE'])
 def delete_customer(customer_id):
     cliente=customer.getById(customer_id)
     if cliente is not None:
         customer.delete(customer_id)
-    return render_template('menu.html')
+    return make_response(redirect('/clientes'))
 
 
 @cliente_bp.route('/atualizar/<int:customer_id>', methods=['GET'])
@@ -69,4 +69,4 @@ def update(customer_id):
 
     message = f"O usuario {updateCustomer} foi atualizado com sucesso."
 
-    return render_template('menu.html', message=message)
+    return render_template('painel-admin.html', message=message)
