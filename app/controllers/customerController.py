@@ -25,7 +25,7 @@ def show_customer_form():
 
 @cliente_bp.route('/cliente/novo', methods=['POST'])
 def create_customer():
-    infos_custumer = {}
+    infos_customer = {}
     infos_auth = {}
     for chave, valor in request.form.items():
         if chave == "senha" or chave == "email":
@@ -33,10 +33,10 @@ def create_customer():
             
         infos_auth['tipo_acesso'] = 1
         
-        infos_custumer[chave] = valor
+        infos_customer[chave] = valor
 
     infos_auth['tipo_acesso'] = 1
-    newCustomer = create_costumer_login(infos_custumer, infos_auth)
+    newCustomer = create_costumer_login(infos_customer, infos_auth)
 
     message = f"O usuario {newCustomer} foi criado com sucesso."
 

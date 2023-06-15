@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename = 'img/ibook_logo.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/default.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/cadastro-cliente.css') }}" />
     <title>Criar</title>
 </head>
 <body>
@@ -18,176 +21,73 @@
             alt="Logo-Ibook"
           />
         </a>
-        <ul class="nav-links"></ul> 
+        <ul class="nav-links">
+          <li><a href="/admin">Voltar</a></li>
+        </ul> 
       </nav>
         
       </header>
       <!-- Bloco onde fica o formulário -->
       <div class="container">
         <div class="form">
-          <form action="{{ url_for('parceiro_bp.create_parceiro') }}" method="POST" enctype="multipart/form-data">
+          <form action="{{ url_for('livro_bp.create_ibook') }}" method="POST" enctype="multipart/form-data">
             <div class="form-header">
               <div class="title">
-                <h1>Cadastre-se</h1>
+                <h1>Cadastro de Livro</h1>
               </div>
             </div>
   
             <div class="input-group">
               <div class="input-box">
-                <label for="companyName">Nome da Empresa</label>
+                <label for="livroNome">Nome</label>
                 <input
-                  id="companyName"
+                  id="livroNome"
                   type="text"
-                  name="nome_empresa"
-                  placeholder="Empresa"
+                  name="nome"
+                  placeholder="Nome de livro"
                  
                 />
               </div>
   
               <div class="input-box">
-                <label for="email">CNPJ</label>
+                <label for="preco">Preço R$</label>
                 <input
-                  id="cnpj"
-                  type="cnpj"
-                  name="cnpj"
-                  placeholder="CNPJ"
+                  id="preco"
+                  type="preco"
+                  name="preco"
+                  placeholder="R$ 0,00"
                  
                 />
               </div>
   
               <div class="input-box">
-                <label for="cel">Celular</label>
+                <label for="estoque">Estoque</label>
                 <input
-                  id="cel"
-                  type="cel"
-                  name="celular"
-                  placeholder="(xx) xxxxx-xxxx"
+                  id="estoque"
+                  type="estoque"
+                  name="qtd_estoque"
+                  placeholder="Quantidade de estoque"
              
                 />
               </div>
   
               <div class="input-box">
-                <label for="email">Email</label>
+                <label for="img">Imagem</label>
                 <input
-                  id="email"
-                  type="email"
-                  name="email"
-                  placeholder="company@email.com"
+                  id="img"
+                  type="img"
+                  name="img"
+                  placeholder="URL de imagem"
                   
                 />
               </div>
   
-              <div class="input-box">
-                <label for="password">Senha</label>
-                <input
-                  id="password"
-                  type="password"
-                  name="senha"
-                  placeholder="Digite sua senha"
-                  
-                />
-              </div>
-  
-              <div class="input-box">
-                <label for="cidade">Cidade</label>
-                <input
-                  id="cidade"
-                  type="cidade"
-                  name="cidade"
-                  placeholder="cidade"
-                  
-                />
-              </div>
-              <div class="input-box">
-                <label for="UF">Estado</label>
-                <select id="UF" name="estado">
-                  <option value="">Selecione</option>
-                  <option value="AC">Acre</option>
-                  <option value="AL">Alagoas</option>
-                  <option value="AP">Amapá</option>
-                  <option value="AM">Amazonas</option>
-                  <option value="BA">Bahia</option>
-                  <option value="CE">Ceará</option>
-                  <option value="DF">Distrito Federal</option>
-                  <option value="ES">Espirito Santo</option>
-                  <option value="GO">Goiás</option>
-                  <option value="MA">Maranhão</option>
-                  <option value="MS">Mato Grosso do Sul</option>
-                  <option value="MT">Mato Grosso</option>
-                  <option value="MG">Minas Gerais</option>
-                  <option value="PA">Pará</option>
-                  <option value="PB">Paraíba</option>
-                  <option value="PR">Paraná</option>
-                  <option value="PE">Pernambuco</option>
-                  <option value="PI">Piauí</option>
-                  <option value="RJ">Rio de Janeiro</option>
-                  <option value="RN">Rio Grande do Norte</option>
-                  <option value="RS">Rio Grande do Sul</option>
-                  <option value="RO">Rondônia</option>
-                  <option value="RR">Roraima</option>
-                  <option value="SC">Santa Catarina</option>
-                  <option value="SP">São Paulo</option>
-                  <option value="SE">Sergipe</option>
-                  <option value="TO">Tocantins</option>
-                </select>
-              </div>
-              <div class="input-box">
-                <label for="bairro">Bairro</label>
-                <input
-                  id="bairro"
-                  type="text"
-                  name="bairro"
-                  placeholder="Digite seu bairro"
-                  
-                />
-              </div>
-              <div class="input-box">
-                <label for="logradouro">Logradouro</label>
-                <input
-                  id="logradouro"
-                  type="text"
-                  name="lougradouro"
-                  placeholder="Digite seu logradouro"
-            
-                />
-              </div>
-              <div class="input-box">
-                <label for="numero">Número</label>
-                <input
-                  id="numero"
-                  type="text"
-                  name="numero"
-                  placeholder="Digite o número do local"
-                  
-                />
-              </div>
-              <div class="input-box">
-                <label for="complemento">Complemento</label>
-                <input
-                  id="complemento"
-                  type="text"
-                  name="complemento"
-                  placeholder="Digite o complemento"
-                  
-                />
-              </div>
-              <div class="input-box">
-                <label for="cep">CEP</label>
-                <input
-                  id="cep"
-                  type="number"
-                  name="cep"
-                  placeholder="Digite o cep do local"
-                />
-              </div>
-            </div>
-  
+              
             <div class="continue-button">
-              <button type="submit" value="Enviar"></button>
+              <button type="submit">Salvar</button>
             </div>
           </form>
         </div>
       </div>
-      <footer></footer>
 </body>
 </html>
