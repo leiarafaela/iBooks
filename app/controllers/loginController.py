@@ -1,7 +1,6 @@
 import os
 from flask import Blueprint, make_response, render_template, redirect, request
-from models.Customer import Customer as customer
-import requests
+from models.Livro import Livro 
 from controllers.regras_negocio import create_costumer_login, login_check, create_parceiro_login
 from integrations.twilio_call_OTP import verifica_otp, solicitar_otp
 
@@ -57,8 +56,8 @@ def verify_otp():
     
 @login_bp.route('/home', methods=['GET'])
 def show_home():
-
-    return render_template('home.html')
+    livros= Livro.getAll()
+    return render_template('home.html', livros=livros)
 
 @login_bp.route('/reset', methods=['GET'])
 def show_reset():

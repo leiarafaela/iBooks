@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      href="../static/img/ibook_logo.png"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="../static/css/default.css" />
+    <link rel="stylesheet" href="../static/css/index.css" />
+ 
+    <script src="https://sdk.mercadopago.com/js/v2"></script> 
+
+<html>
+<head>
+    <title>Carrinho de Compras</title>
+</head><script>
+    
+    const mp = new MercadoPago('TEST-a76ed238-da3e-4281-9e99-9c4eb2ef57c8');
+
+        mp.bricks().create("wallet", "wallet_container", {
+        initialization: {
+            preferenceId: "donate123",
+            redirectMode: "modal"
+        },
+        });
+ 
+    </script>
+<body>
+    <header>
+        <nav>
+          <a href="/"><img src="../static/img/ibook_logo.png" alt="" /></a>
+          <ul class="nav-links">
+            <li><a href="/home">Home</a></li>
+          </ul> 
+        </nav>
+    </header>
+
+    <div class="container2">
+        <h1>Carrinho de Compras</h1> 
+        <table>
+            <thead>
+                <tr>
+                    <th>Produto</th>
+                    <th>Preço</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for produto in carrinho %}
+                <tr>
+                    <td>{{ produto.nome }}</td>
+                    <td>{{ produto.preco }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <form class="form" action="{{ url_for('carrinho.criar_pagamento') }}" method="POST">
+            <div type="submit" id="wallet_container"></div> 
+        </form>
+
+    </div>
+
+    
+    
+</body>
+</html>

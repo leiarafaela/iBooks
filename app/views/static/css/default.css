@@ -69,14 +69,29 @@ nav a img{
   transform: translateY(-10px);
 }
 
-footer{
+.footer-bg{
   width: 100%;
-  height: 120px;
   background-color: gray;
-  position: absolute;
-  bottom: 0;
-  vertical-align: bottom;
+  margin-top: 40px;
 }
+
+.footer-container{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding: 20px 10px;
+  justify-items: center;
+}
+.footer-container h2{
+  color: #ccc;
+}
+.footer-container p {
+  color: #ffffff;
+}
+
+.footer-container a{
+  color: #ffffff;
+}
+
 .error{
   color: red;
 }

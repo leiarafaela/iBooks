@@ -84,10 +84,10 @@
                     <td>{{ livro.preco }}</td>
                     <td>{{ livro.qtd_estoque }}</td>
                     <td>
-                      <a href="/atualizar/{{ livro['id'] }}" class="btn-editar">Editar</a>
+                      <!-- <a href="/atualizar/{{ livro['id'] }}" class="btn-editar">Editar</a> -->
                     </td>
                     <td>
-                      <a href="{{ url_for('livro_bp.delete_ibook', ibook_id = livro['id']) }}" methods="DELETE" class="btn-editar">Excluir</a>
+                      <a href="/delete/livro/{{ livro['id']}}" methods="DELETE" class="btn-editar">Excluir</a>
                     </td>
                   </tr>
                   {% endfor %}
