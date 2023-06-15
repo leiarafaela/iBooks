@@ -1,14 +1,16 @@
 from flask import Blueprint, jsonify, make_response, redirect, render_template, request
 from controllers.regras_negocio import create_costumer_login
 from models.Customer import Customer as customer
+from models.Livro import Livro as livro
 
 cliente_bp = Blueprint('cliente_bp', __name__)
 
 @cliente_bp.route('/admin', methods=['GET'])
-def get_all_customers():
+def get_all_customers_ibooks():
     list_customer = customer.getAll()
+    list_ibooks = livro.getAll() 
 
-    return render_template("painel-admin.html", usuarios=list_customer)
+    return render_template("painel-admin.html", usuarios=list_customer, livros=list_ibooks)
 
 @cliente_bp.route('/clientes/<int:customer_id>', methods=['GET'])
 def get_customer(customer_id):

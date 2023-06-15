@@ -1,6 +1,21 @@
-.container{ padding: 10px;}
+.container{ 
+  width: 300px;
+    height: 100px;
+    display: inline-block;
+    padding: 20px;
+  }
 
 h1 {
     text-align: center;
     margin: 0 auto;
+  }
+
+  .container button{
+    width: 140px;
+    background-color: #E69542 ;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    color: #fff;
+    font-weight: bold;
   }

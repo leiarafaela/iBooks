@@ -17,6 +17,7 @@
       rel="stylesheet"
       href="{{ url_for('static', filename = 'css/login.css') }}"
     />
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <title>Login</title>
   </head> 
   <body>
@@ -43,14 +44,17 @@
           <input type="email" name="email" id="id_email" placeholder="Email" />
           
           <input type="password" name="senha" id="id_senha" placeholder="Senha"/>
+
           <button type="submit">Entrar</button><br />
         </form>
 
-        <a href="/google">
+        
+        
+        <!-- <a href="/google">
         <button type="button" class="login-with-google-btn" >
           Sign in with Google
         </button>
-      </a>
+      </a> -->
         <div>
           
           <a class="button" id="cadastro" href="/cliente/novo">

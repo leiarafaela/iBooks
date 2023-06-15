@@ -40,8 +40,8 @@
          
     </header>
     <div class="container">
-        <h2>Listagem de usuarios</h2>
-        <div class="row">
+        <h2>Listagem de Clientes</h2>
+        
           <div class="col-xs-12">
             <table class="tab">
               <thead>
@@ -63,8 +63,42 @@
                 </tr>
                 {% endfor %}
               </tbody>
-            </table>
+            </table>  
           </div>
         </div>
 
-    
+        <div class="container">
+          <h2>Listagem de Livros</h2>
+       
+            <div class="col-xs-12">
+              <table class="tab">
+                <thead>
+                  <th>Nome</th>
+                  <th>Email</th>
+                  <th>Ações</th>
+                </thead>
+                <tbody>
+                  {% for user in  usuarios %}
+                  <tr>
+                    <td>{{ user.nome }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>
+                      <a href="/atualizar/{{ user['id'] }}" class="btn-editar">Editar</a>
+                    </td>
+                    <td>
+                      <a href="{{ url_for('cliente_bp.delete_customer', customer_id = user['id']) }}" methods="DELETE" class="btn-editar">Excluir</a>
+                    </td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>  
+            </div>
+          </div>
+
+          <div class="container">
+            <a href="/">
+              <button type="button">Cadastrar Livro</button>
+            </a>     
+          </div>
+      </body>
+    </html>

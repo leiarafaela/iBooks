@@ -1,6 +1,7 @@
 import os
 from flask import Blueprint, make_response, render_template, redirect, request
 from models.Customer import Customer as customer
+import requests
 from controllers.regras_negocio import create_costumer_login, login_check, create_parceiro_login
 from integrations.twilio_call_OTP import verifica_otp, solicitar_otp
 
@@ -24,9 +25,9 @@ def login():
             error = "Informar senha"
             return render_template("login.html", error=error)
             
-        infos_auth[chave] = valor
-        
-    logado = True
+        infos_auth[chave] = valor  
+    
+    logado = login_check(infos_auth)
 
     if logado:
         # clienteCel = customer.getCelByEmail(infos_auth['email'])

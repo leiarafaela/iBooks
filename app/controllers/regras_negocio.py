@@ -1,6 +1,4 @@
 from models.Customer import Customer 
-from models.Produto import Produto
-from models.Parceiro import Parceiro
 from models.Auth import Auth
 from util import criptografar_senha, verificar_senha
 
